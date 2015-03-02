@@ -1,3 +1,54 @@
+This is my solution to the challenge given below.
+
+The pages I am referring to are hosted here: http://marboro92.github.io/Optimization/
+
+Testing page: https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fmarboro92.github.io%2FOptimization%2F&tab=desktop
+
+FPS analysis done with Chrome Dev Tools
+
+Development, unminified code can be found in the master branch of this repository.
+
+The Following changes were made to the home page (index.html) in order to acheive a page speed score of over 90 (according to google's page speed insights) on mobile and desktop devices:
+
+JavaScript files have been given the async attribute to minimize CRP (Critical Rendering Path)
+Google fonts were loaded with async js instead of css
+Images were compressed and/or resized manually and using Gulp (found in img folder)
+All necessary css was identified and inlined into html
+Gulp was used to compress html and js files
+The next task can be seen by clicking on the "Cam's Pizzeria" link in http://marboro92.github.io/Optimization/ or here http://marboro92.github.io/Optimization/views/pizza.html
+
+The following changes were made to views/js/main.js in order to achieve 60fps and fix jank on the views/pizza.html page.
+
+more detailed comments can be seen in main.js
+
+For loops were optimized by minimizing number of necessary iterations
+Variables that need not be defined on each iteration were removed from inside for loops
+Variables that were global but referenced in only one function were moved into the local scope of that function
+Unnecessary references to constant values as variables were removed and replaced by the corresponding constant value
+Pizza slider was improved by optimizing the for loop within resizePizzas function and removing unnecessary iterations
+TranslateX used instead of left in JS to animate pizza's, promoting pizzas to a new layer to minimize painting
+Unchanging style elements were moved from js to css
+REFERENCES:
+
+Optimization Tips and Tricks
+
+Optimizing Performance
+Analyzing the Critical Rendering Path
+Optimizing the Critical Rendering Path
+Avoiding Rendering Blocking CSS
+Optimizing JavaScript
+Measuring with Navigation Timing. We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
+The fewer the downloads, the better
+Reduce the size of text
+Optimize images
+HTTP caching
+
+https://www.youtube.com/watch?v=n8ep4leoN9A
+
+http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/
+http://www.webreference.com/programming/javascript/jkm3/2.html
+
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
